@@ -59,7 +59,7 @@ export default function Weather() {
         </a>
         , is
         <a
-          href="https://github.com/robidful/weather-app-shecodes-2nd-version"
+          href="https://github.com/robidful/my-app"
           target="_blank"
           rel="noreferrer"
         >
@@ -67,7 +67,7 @@ export default function Weather() {
         </a>
         and
         <a
-          href="https://brilliant-bienenstitch-621652.netlify.app/"
+          href="https://sprightly-dragon-57cd0f.netlify.app/"
           target="_blank"
           rel="noreferrer"
         >
