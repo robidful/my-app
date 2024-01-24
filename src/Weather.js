@@ -54,7 +54,7 @@ export default function Weather() {
 
       <footer>
         This project was coded by
-        <a href="https://github.com/robidful" target="_blank">
+        <a href="https://github.com/robidful" target="_blank" rel="noreferrer">
           {" "}
           Roberta Di Cio
         </a>
@@ -62,6 +62,7 @@ export default function Weather() {
         <a
           href="https://github.com/robidful/weather-app-shecodes-2nd-version"
           target="_blank"
+          rel="noreferrer"
         >
           -open-sourced on GitHub-
         </a>
@@ -69,6 +70,7 @@ export default function Weather() {
         <a
           href="https://brilliant-bienenstitch-621652.netlify.app/"
           target="_blank"
+          rel="noreferrer"
         >
           -hosted on Netlify
         </a>
