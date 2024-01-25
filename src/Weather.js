@@ -1,84 +1,108 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Weather.css";
 import "./index.css";
+import axios from "axios";
 
 export default function Weather() {
-  let weatherInfo = {
-    city: "Lisbon",
-    date: "Wednesday 10:00",
-    weather: "Few clouds",
-    temp: "16",
-    humidity: "79",
-    wind: "16.54",
-  };
+  const [ready, setReady] = useState(false);
+  const [weatherData, setWeatherData] = useState({});
+  function handleResponse(response) {
+    setWeatherData({
+      temperature: response.data.main.temp,
+      city: response.data.name,
+      description: response.data.weather[0].description,
+      iconUrl: "https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png",
+      humidity: response.data.main.humidity,
+      wind: response.data.wind.speed,
+    });
 
-  return (
-    <div className="weather-app">
-      <header>
-        <form className="search-form" id="search-form">
-          <input
-            type="search"
-            placeholder="Enter a city.."
-            required
-            className="search-form-input"
-            id="search-form-input"
-            autoFocus="on"
-          />
-          <input type="submit" value="Search" class="search-form-button" />
-        </form>
-      </header>
-      <main>
-        <div className="row">
-          <div className="col-6">
-            <h1 className="weather-app-city" id="city">
-              {weatherInfo.city}
-            </h1>
-            <p className="weather-app-details">
-              <span id="time">{weatherInfo.date}</span>,{" "}
-              <span id="description">{weatherInfo.weather}</span>
-              <br />
-              Humidity: <strong id="humidity">{weatherInfo.humidity}%</strong>,
-              Wind:
-              <strong id="wind-speed">{weatherInfo.wind} km/h</strong>
-            </p>
+    setReady(true);
+  }
+
+  if (ready) {
+    return (
+      <div className="weather-app">
+        <header>
+          <form className="search-form" id="search-form">
+            <input
+              type="search"
+              placeholder="Enter a city.."
+              required
+              className="search-form-input"
+              id="search-form-input"
+              autoFocus="on"
+            />
+            <input type="submit" value="Search" class="search-form-button" />
+          </form>
+        </header>
+        <main>
+          <div className="row">
+            <div className="col-6">
+              <h1 className="weather-app-city" id="city">
+                {weatherData.city}
+              </h1>
+              <p className="weather-app-details">
+                <span id="time">Thursday, 10.00</span>,{" "}
+                <span id="description">{weatherData.description}</span>
+                <br />
+                Humidity: <strong id="humidity">{weatherData.humidity}%</strong>
+                , Wind:
+                <strong id="wind-speed"> {weatherData.wind} km/h</strong>
+              </p>
+            </div>
+
+            <div className="col-6">
+              <img
+                src={weatherData.iconUrl}
+                alt="Mostly cloudy"
+                className="icon"
+              />
+              <span className="weather-app-temperature">
+                {Math.round(weatherData.temperature)}
+              </span>{" "}
+              <span className="unit">°C</span>
+            </div>
           </div>
+          <div className="weather-forecast" id="forecast"></div>
+        </main>
 
-          <div className="col-6">
-            <div id="icon"></div>
-            <span className="weather-app-temperature">
-              {weatherInfo.temp}
-            </span>{" "}
-            <span className="unit">°C</span>
-          </div>
-        </div>
-        <div className="weather-forecast" id="forecast"></div>
-      </main>
+        <footer>
+          This project was coded by
+          <a
+            href="https://github.com/robidful"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {" "}
+            Roberta Di Cio
+          </a>
+          , is
+          <a
+            href="https://github.com/robidful/my-app"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {" "}
+            open-sourced on GitHub
+          </a>{" "}
+          and
+          <a
+            href="https://sprightly-dragon-57cd0f.netlify.app/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {" "}
+            hosted on Netlify
+          </a>
+        </footer>
+      </div>
+    );
+  } else {
+    const apiKey = "d5523e724fae55536f5f65b8b74358f2";
+    let city = "London";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
 
-      <footer>
-        This project was coded by
-        <a href="https://github.com/robidful" target="_blank" rel="noreferrer">
-          {" "}
-          Roberta Di Cio
-        </a>
-        , is
-        <a
-          href="https://github.com/robidful/my-app"
-          target="_blank"
-          rel="noreferrer"
-        >
-          {" "}
-          open-sourced on GitHub
-        </a>{" "}
-        and
-        <a
-          href="https://sprightly-dragon-57cd0f.netlify.app/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          {" "}
-          hosted on Netlify
-        </a>
-      </footer>
-    </div>
-  );
+    return "Loading...";
+  }
 }

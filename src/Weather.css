@@ -66,9 +66,12 @@ main {
   color: #30887e;
 }
 
-.weather-app-icon {
-  width: 88px;
-  height: 88px;
+.icon {
+  height: 75px;
+  width: 75px;
+  position: relative;
+  margin-top: -30px;
+  margin-right: -20px;
 }
 
 .weather-app-temperature {
