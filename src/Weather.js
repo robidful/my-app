@@ -4,22 +4,21 @@ import "./index.css";
 import axios from "axios";
 
 export default function Weather() {
-  const [ready, setReady] = useState(false);
-  const [weatherData, setWeatherData] = useState({});
+  const [weatherData, setWeatherData] = useState({ ready: false });
   function handleResponse(response) {
     setWeatherData({
+      ready: true,
       temperature: response.data.main.temp,
       city: response.data.name,
+      date: "Thursday 16:00",
       description: response.data.weather[0].description,
       iconUrl: "https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png",
       humidity: response.data.main.humidity,
       wind: response.data.wind.speed,
     });
-
-    setReady(true);
   }
 
-  if (ready) {
+  if (weatherData.ready) {
     return (
       <div className="weather-app">
         <header>
@@ -42,8 +41,10 @@ export default function Weather() {
                 {weatherData.city}
               </h1>
               <p className="weather-app-details">
-                <span id="time">Thursday, 10.00</span>,{" "}
-                <span id="description">{weatherData.description}</span>
+                <span id="time">{weatherData.date}</span>,{" "}
+                <span id="description" className="text-capitalize">
+                  {weatherData.description}
+                </span>
                 <br />
                 Humidity: <strong id="humidity">{weatherData.humidity}%</strong>
                 , Wind:
