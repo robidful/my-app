@@ -22,6 +22,7 @@ export default function Weather() {
             required
             className="search-form-input"
             id="search-form-input"
+            autoFocus="on"
           />
           <input type="submit" value="Search" class="search-form-button" />
         </form>
@@ -44,9 +45,10 @@ export default function Weather() {
 
           <div className="col-6">
             <div id="icon"></div>
-            <div className="weather-app-temperature" id="temperature">
-              {weatherInfo.temp} °C
-            </div>
+            <span className="weather-app-temperature">
+              {weatherInfo.temp}
+            </span>{" "}
+            <span className="unit">°C</span>
           </div>
         </div>
         <div className="weather-forecast" id="forecast"></div>
