@@ -1,5 +1,5 @@
 import React from "react";
-import "./index.css";
+import "./Weather.css";
 
 export default function Weather() {
   let weatherInfo = {
@@ -26,8 +26,8 @@ export default function Weather() {
         </form>
       </header>
       <main>
-        <div className="weather-app-data">
-          <div>
+        <div className="row">
+          <div className="col-6">
             <h1 className="weather-app-city" id="city">
               {weatherInfo.city}
             </h1>
@@ -40,12 +40,12 @@ export default function Weather() {
               <strong id="wind-speed">{weatherInfo.wind} km/h</strong>
             </p>
           </div>
-          <div className="weather-app-temperature-container">
+
+          <div className="col-6">
             <div id="icon"></div>
             <div className="weather-app-temperature" id="temperature">
-              {weatherInfo.temp}
+              {weatherInfo.temp} °C
             </div>
-            <div className="weather-app-unit">°C</div>
           </div>
         </div>
         <div className="weather-forecast" id="forecast"></div>
@@ -64,8 +64,8 @@ export default function Weather() {
           rel="noreferrer"
         >
           {" "}
-          -open-sourced on GitHub-
-        </a>
+          open-sourced on GitHub
+        </a>{" "}
         and
         <a
           href="https://sprightly-dragon-57cd0f.netlify.app/"
@@ -73,7 +73,7 @@ export default function Weather() {
           rel="noreferrer"
         >
           {" "}
-          -hosted on Netlify
+          hosted on Netlify
         </a>
       </footer>
     </div>
