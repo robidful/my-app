@@ -57,6 +57,8 @@ main {
 .weather-app-data {
   display: flex;
   justify-content: space-between;
+  text-align: left;
+  margin-left: 20px;
 }
 
 .weather-app-city {

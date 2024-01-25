@@ -63,6 +63,7 @@ export default function Weather() {
           target="_blank"
           rel="noreferrer"
         >
+          {" "}
           -open-sourced on GitHub-
         </a>
         and
@@ -71,6 +72,7 @@ export default function Weather() {
           target="_blank"
           rel="noreferrer"
         >
+          {" "}
           -hosted on Netlify
         </a>
       </footer>
