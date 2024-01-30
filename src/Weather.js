@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Weather.css";
 import Weatherinfo from "./Weatherinfo";
+import WeatherForecast from "./WeatherForecast";
 import "./index.css";
 import axios from "axios";
 
@@ -57,6 +58,37 @@ export default function Weather(props) {
           </form>
         </header>
         <Weatherinfo data={weatherData} />
+        <WeatherForecast />
+
+        <footer>
+          This project was coded by
+          <a
+            href="https://github.com/robidful"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {" "}
+            Roberta Di Cio
+          </a>
+          , is
+          <a
+            href="https://github.com/robidful/my-app"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {" "}
+            open-sourced on GitHub
+          </a>{" "}
+          and
+          <a
+            href="https://sprightly-dragon-57cd0f.netlify.app/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {" "}
+            hosted on Netlify
+          </a>
+        </footer>
       </div>
     );
   } else {

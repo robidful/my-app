@@ -29,39 +29,13 @@ export default function Weatherinfo(props) {
 
           <div className="col-6">
             <span className="icon">
-              <WeatherIcon code={props.data.icon} />
+              <WeatherIcon code={props.data.icon} size={68} />
             </span>
             <WeatherTemperature celsius={props.data.temperature} />
           </div>
         </div>
         <div className="weather-forecast" id="forecast"></div>
       </main>
-
-      <footer>
-        This project was coded by
-        <a href="https://github.com/robidful" target="_blank" rel="noreferrer">
-          {" "}
-          Roberta Di Cio
-        </a>
-        , is
-        <a
-          href="https://github.com/robidful/my-app"
-          target="_blank"
-          rel="noreferrer"
-        >
-          {" "}
-          open-sourced on GitHub
-        </a>{" "}
-        and
-        <a
-          href="https://sprightly-dragon-57cd0f.netlify.app/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          {" "}
-          hosted on Netlify
-        </a>
-      </footer>
     </div>
   );
 }
